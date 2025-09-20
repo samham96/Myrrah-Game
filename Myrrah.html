@@ -407,19 +407,21 @@ padding: 0px;
 .passageImage img {
     height: 100%;             
     width: auto;             
-    display: block;
+  object-fit:cover;
 }
 .passageImage {
-    flex: 0 0 auto;           
-    display: flex;             
+    flex: 0 0 auto; 
+    display: flex; 
+  border: double, black; 
+  border-radius: 5px;
 }
 .passage.Text .passageText {
     flex: 1 1 400px;          
     min-width: 300px;
     border: double black;
-    padding: 20px;
     overflow-y: auto;         
     box-sizing: border-box;
+    border-radius: 5px;
 }
 .passage.Text {
     display: flex;
@@ -430,17 +432,19 @@ padding: 0px;
     width: 100%;
     max-width: 1200px;        
     margin: 0 auto;           
-    padding: 10px;
     box-sizing: border-box;
+
 }
+
 .passageContainer {
     display: flex;              
-    align-items: flex-start;    
+    align-items: center;
+  justify-content: center;
     gap: 20px;                  
     width: 100vw;
-    max-width: 1200px;          
+  	padding: 10px;
     margin: 0px auto;            
-    padding: 10px;
+    padding: 5px;
     box-sizing: border-box;
 }
 /* Terminal styling */
@@ -673,7 +677,8 @@ align-content: center;
 }
 .terminalIcons{
   height: 40vh;
-  display: grid;
+  display: flex;
+  flex-direction: column;
   padding: 20px;
   gap: 20px;
 }
@@ -942,6 +947,9 @@ content: none;
 }
 #ui-dialog-body{
 background:  rgba(20, 20, 20, 0.85);
+}
+.notification .link-internal macro-link{
+pointer-events: none;
 }</style><script role="script" id="twine-user-script" type="text/twine-javascript">// Stats & Abilities
 $(document).on(':storyready', function () {
     if (!$('#statblock').length) {
@@ -1293,7 +1301,7 @@ the idle clicking of machines muffled by layers of concrete…the shifting of st
 &lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;
 &lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
 &lt;link href=&quot;https://fonts.googleapis.com/css2?family=Italianno&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;&lt;&lt;/silent&gt;&gt;</tw-passagedata><tw-passagedata pid="10" name="StoryInit" tags="" position="50,50" size="100,100">:: StoryInit
-&lt;&lt;silent&gt;&gt;
+
 /* --- Palette --- */
 &lt;&lt;run $(&quot;body&quot;).addClass(&quot;darkPalette&quot;)&gt;&gt;
 
@@ -1308,18 +1316,23 @@ the idle clicking of machines muffled by layers of concrete…the shifting of st
 &lt;&lt;set $vigor = 2&gt;&gt;
 &lt;&lt;set $muscle = 3&gt;&gt;
 /* --- Local Audio --- */
+
 &lt;&lt;cacheaudio &quot;title&quot; &quot;assets/audiofiles/Main Menu Theme.mp3&quot;&gt;&gt;
+&lt;&lt;cacheaudio &quot;title2&quot; &quot;assets/audiofiles/title2.mp3&quot;&gt;&gt;
 &lt;&lt;createaudiogroup &quot;:bg_music&quot;&gt;&gt;
   &lt;&lt;track &quot;title&quot;&gt;&gt;
+  &lt;&lt;track &quot;title2&quot;&gt;&gt;
 &lt;&lt;/createaudiogroup&gt;&gt;
 
+&lt;&lt;masteraudio volume 0.40&gt;&gt;
+/* -- Map-- */
 &lt;&lt;set $mapUnlocked = {
     &quot;world&quot;: true,   /* everyone starts with this */
     &quot;city&quot;: false,
     &quot;dungeon&quot;: false
 }&gt;&gt;
 
-&lt;&lt;/silent&gt;&gt;</tw-passagedata><tw-passagedata pid="11" name="Check Notification" tags="terminal" position="300,1000" size="100,100">&lt;&lt;silent&gt;&gt;
+</tw-passagedata><tw-passagedata pid="11" name="Check Notification" tags="terminal" position="25,1125" size="100,100">&lt;&lt;silent&gt;&gt;
 &lt;!-- Debug Value is set to true while route A is being worked on --&gt;
 &lt;&lt;set $hasMeet ==false&gt;&gt;
 
@@ -1572,9 +1585,9 @@ the idle clicking of machines muffled by layers of concrete…the shifting of st
   &lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
   &lt;link href=&quot;https://fonts.googleapis.com/css2?family=Italianno&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
 &lt;/div&gt;
-&lt;&lt;audio &quot;title&quot; play loop&gt;&gt;
+&lt;&lt;audio &quot;title&quot; play loop volume 0.4&gt;&gt;
 
-&lt;&lt;/silent&gt;&gt;</tw-passagedata><tw-passagedata pid="13" name="Look at Twin Peaks Poster" tags="Text" position="225,1125" size="100,100">&lt;div class=&quot;passageContainer&quot;&gt;&lt;div class = &quot;passageText&quot;&gt;
+&lt;&lt;/silent&gt;&gt;</tw-passagedata><tw-passagedata pid="13" name="Look at Twin Peaks Poster" tags="Text" position="225,1000" size="100,100">&lt;div class=&quot;passageContainer&quot;&gt;&lt;div class = &quot;passageText&quot;&gt;
 You glance and hold your gaze on Kyle Maclauchan’sFace His eyes meet yours. You look deeper and start to see all the technicolor dots that comprise his smirk. You’ve had this poster since you first attended community college. You felt so independent to finally purchase something with your own summer job money and pinned it with purpose on thewall. 
 
 The hard smell of latex paint fills your senses. The feeling of shag carpet beneath you. This was the first time in your life, It was just you, alone. You bought this poster because you think you like Twin Peaks. You saw a season once and you think you were interested in the plot. After 6 years of schooling, an Associates and Bachelor&#39;s, and an array of shitty part-time jobs, you chose to hang it in your office cubicle as a reminder of something you don’t think you quite know or can articulate. 
@@ -1614,7 +1627,7 @@ Even now, you are not sure if you like Twin Peaks or what even Twin Peaks is abo
     &lt;input id=&quot;chatInput&quot; type=&quot;text&quot; placeholder=&quot;Type a message...&quot;&gt;
     &lt;button onclick=&quot;sendIM()&quot;&gt;Send&lt;/button&gt;
   &lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="15" name="Go Home" tags="Text" position="300,1250" size="100,100">&lt;div class=&quot;passageContainer&quot;&gt;&lt;div class = &quot;passageText&quot;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="15" name="Go Home" tags="Text" position="300,1150" size="100,100">&lt;div class=&quot;passageContainer&quot;&gt;&lt;div class = &quot;passageText&quot;&gt;
 &lt;/div&gt;&lt;/div&gt;
 
 &lt;&lt;silent&gt;&gt;
@@ -1622,14 +1635,14 @@ Even now, you are not sure if you like Twin Peaks or what even Twin Peaks is abo
 &lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
 &lt;link href=&quot;https://fonts.googleapis.com/css2?family=Italianno&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
 &lt;&lt;/silent&gt;&gt;
-</tw-passagedata><tw-passagedata pid="16" name="Log Off" tags="Text" position="375,1125" size="100,100">&lt;div class=&quot;passageContainer&quot;&gt;&lt;div class = &quot;passageText&quot;&gt;
+</tw-passagedata><tw-passagedata pid="16" name="Log Off" tags="Text" position="375,1000" size="100,100">&lt;div class=&quot;passageContainer&quot;&gt;&lt;div class = &quot;passageText&quot;&gt;
 [[Go Home]]
 &lt;/div&gt;&lt;/div&gt;
 &lt;&lt;silent&gt;&gt;
 &lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;
 &lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
 &lt;link href=&quot;https://fonts.googleapis.com/css2?family=Italianno&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
-&lt;&lt;/silent&gt;&gt;</tw-passagedata><tw-passagedata pid="17" name="StoryCaption" tags="" position="50,175" size="100,100"></tw-passagedata><tw-passagedata pid="18" name="Into the Abyss" tags="" position="875,700" size="100,100">&lt;&lt;set $mapUnlocked.dungeon = true&gt;&gt;</tw-passagedata><tw-passagedata pid="19" name="Sit_Old" tags="terminal" position="75,1000" size="100,100">&lt;&lt;silent&gt;&gt;
+&lt;&lt;/silent&gt;&gt;</tw-passagedata><tw-passagedata pid="17" name="StoryCaption" tags="" position="50,175" size="100,100"></tw-passagedata><tw-passagedata pid="18" name="Into the Abyss" tags="" position="500,1175" size="100,100">&lt;&lt;set $mapUnlocked.dungeon = true&gt;&gt;</tw-passagedata><tw-passagedata pid="19" name="Sit_Old" tags="terminal" position="25,1000" size="100,100">&lt;&lt;silent&gt;&gt;
 &lt;&lt;run $(&quot;body&quot;).removeClass(&quot;brightPalette&quot;).addClass(&quot;terminalPalette&quot;)&gt;&gt;
 &lt;&lt;/silent&gt;&gt;
 
@@ -1991,7 +2004,7 @@ Even now, you are not sure if you like Twin Peaks or what even Twin Peaks is abo
 &lt;/div&gt;
 
 &lt;&lt;silent&gt;&gt;
-[[ 1 |Check Notification]]
+
 &lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;
 &lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
 &lt;link href=&quot;https://fonts.googleapis.com/css2?family=Italianno&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;&lt;&lt;/silent&gt;&gt;</tw-passagedata></tw-storydata>
